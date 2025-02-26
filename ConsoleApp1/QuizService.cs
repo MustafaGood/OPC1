@@ -8,11 +8,14 @@ namespace QuizApp.Services
     public static class QuizService
 
     {
+            // En tjänst (service) för att hantera quiz-frågor
+
         public static void DisplayIntro(bool isEnglish)
         {
             Console.Clear();
             if (isEnglish)
-            {
+            {             
+                   // Skriver ut introduktion på engelska
                 Console.WriteLine("==============================================");
                 Console.WriteLine("       Welcome to Programming Quiz");
                 Console.WriteLine("          for Programming language!");
@@ -22,6 +25,8 @@ namespace QuizApp.Services
             }
             else
             {
+                                // Skriver ut introduktion på svenska
+
                 Console.WriteLine("==============================================");
                 Console.WriteLine(" Välkommen till Programmeringsquiz för");
                 Console.WriteLine("         Programmeringspråk!");
@@ -29,12 +34,13 @@ namespace QuizApp.Services
                 Console.WriteLine("Det finns totalt 15 frågor att besvara.");
                 Console.WriteLine("Tryck 'Enter' för att starta.");
             }
-            Console.ReadLine();
+            Console.ReadLine(); // Väntar på att användaren trycker på Enter
         }
+        // Hämtar en lista med frågor för quizet, antingen på engelska eller svenska
         public static List<Question> GetQuestions(bool isEnglish)
         {
             if (isEnglish)
-            {
+            {// Returnerar en lista med frågor på engelska
                 return new List<Question>
                 {
                     new Question("Which tag pair is used to create a heading in HTML?", new string[] { "<p>", "<h1>", "<div>", "<span>" }, "<h1>"),
@@ -56,7 +62,8 @@ namespace QuizApp.Services
                 .OrderBy(q => Guid.NewGuid()).ToList();
             }
             else
-            {
+            {                // Returnerar en lista med frågor på svenska
+
                 return new List<Question>
                 {
                     new Question("Vilket taggpar används för att skapa en rubrik i HTML? / Which tag pair is used to create a heading in HTML?", new string[] { "<p>", "<h1>", "<div>", "<span>" }, "<h1>"),
