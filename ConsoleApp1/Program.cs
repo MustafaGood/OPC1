@@ -2,37 +2,53 @@
 using System.Collections.Generic;
 using QuizApp.Models;
 using QuizApp.Services;
+// Frågar användaren om språkval
 
 Console.WriteLine("Select language: 1. Swedish 2. English");
 string langChoice = Console.ReadLine() ?? string.Empty;
 bool isEnglish = langChoice == "2";
+// Visar information om ett godkänt resultat beroende på valt språk
+
 Console.WriteLine(isEnglish
     ? "Important: Passing is over 15 correct answers and failing is under 15."
     : "Viktigt: Godkänd är över 15 frågor och under 15 är underkänd.");
+// Visar introduktionstext och hämtar frågor från QuizService
+
 QuizService.DisplayIntro(isEnglish);
 List<Question> questions = QuizService.GetQuestions(isEnglish);
 
 int score = RunQuiz(questions, isEnglish);
+// Startar quizet och räknar ut poängen
+
 
 double percent = (double)score / questions.Count * 100;
 string evaluation = isEnglish
     ? (score > 15 ? "Passed" : "Failed")
     : (score > 15 ? "Godkänd" : "Underkänd");
+// Ändrar färg beroende på om spelaren klarade quizet eller inte
+
 Console.ForegroundColor = score > 15 ? ConsoleColor.Green : ConsoleColor.Red;
+// Visar slutresultatet för användaren
+
 Console.WriteLine(isEnglish
     ? $"Thank you for playing! You got {score} out of {questions.Count} correct ({percent:0.##}%). {evaluation}."
     : $"Tack för att du spelade! Du fick {score} av {questions.Count} rätt ({percent:0.##}%). {evaluation}.");
 Console.ResetColor();
 
 static int RunQuiz(List<Question> questions, bool isEnglish)
-{
+{    // Sparar spelarens poäng
+
     int score  0;
+    // Håller koll på frågenumret
+
     int questionNumber = 1;
 
     foreach (var question in questions)
     {
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine(isEnglish
+            // Visar frågan i cyan färg
+
             ? $"Question {questionNumber}: {question.Text}"
             : $"Fråga {questionNumber}: {question.Text}");
         Console.ResetColor();
