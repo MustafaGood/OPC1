@@ -10,8 +10,8 @@ bool isEnglish = langChoice == "2";
 // Visar information om ett godkänt resultat beroende på valt språk
 
 Console.WriteLine(isEnglish
-    ? "Important: Passing is over 15 correct answers and failing is under 15."
-    : "Viktigt: Godkänd är över 15 frågor och under 15 är underkänd.");
+    ? "Important: Passing is 10 or more correct answers (66%). Less than 10 is failing."
+    : "Viktigt: Godkänd är 10 eller fler rätta svar (66%). Under 10 är underkänd.");
 // Visar introduktionstext och hämtar frågor från QuizService
 
 QuizService.DisplayIntro(isEnglish);
@@ -23,11 +23,11 @@ int score = RunQuiz(questions, isEnglish);
 
 double percent = (double)score / questions.Count * 100;
 string evaluation = isEnglish
-    ? (score > 15 ? "Passed" : "Failed")
-    : (score > 15 ? "Godkänd" : "Underkänd");
+    ? (score >= 10 ? "Passed" : "Failed")
+    : (score >= 10 ? "Godkänd" : "Underkänd");
 // Ändrar färg beroende på om spelaren klarade quizet eller inte
 
-Console.ForegroundColor = score > 15 ? ConsoleColor.Green : ConsoleColor.Red;
+Console.ForegroundColor = score >= 10 ? ConsoleColor.Green : ConsoleColor.Red;
 // Visar slutresultatet för användaren
 
 Console.WriteLine(isEnglish
@@ -38,7 +38,7 @@ Console.ResetColor();
 static int RunQuiz(List<Question> questions, bool isEnglish)
 {    // Sparar spelarens poäng
 
-    int score  0;
+    int score = 0;
     // Håller koll på frågenumret
 
     int questionNumber = 1;

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iGN9UM2fb3I=",
+  "dgSpecHash": "db6luqMEvnE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\musta\\Desktop\\Mustafa C#\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
+  "projectFilePath": "C:\\Users\\musta\\Desktop\\OPC1\\ConsoleApp1\\ConsoleApp1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\musta\\.nuget\\packages\\microsoft.codecoverage\\17.13.0\\microsoft.codecoverage.17.13.0.nupkg.sha512",
     "C:\\Users\\musta\\.nuget\\packages\\microsoft.net.test.sdk\\17.13.0\\microsoft.net.test.sdk.17.13.0.nupkg.sha512",
