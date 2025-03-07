@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using QuizApp.Models;
 using QuizApp.Services;
@@ -72,14 +72,14 @@ static int RunQuiz(List<Question> questions, bool isEnglish)
         {
             score++;
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(isEnglish ? "Correct ✅" : "Rätt ✅");
+            Console.WriteLine(isEnglish ? "Correct " : "Rätt ");
             Console.WriteLine(isEnglish ? $"Your current score: {score}\n" : $"Din nuvarande poäng: {score}\n");
             Console.ResetColor();
         }
         else
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(isEnglish ? "Wrong ❌" : "Fel ❌");
+            Console.WriteLine(isEnglish ? "Wrong " : "Fel ");
             Console.WriteLine(isEnglish
                 ? $"Correct answer: {correctIndex}. {question.CorrectAnswer}"
                 : $"Rätt svar: {correctIndex}. {question.CorrectAnswer}");
